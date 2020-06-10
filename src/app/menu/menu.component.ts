@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../services/products.service'
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  products:any;
 
-  constructor() { }
+  constructor(private productsService:ProductsService) {
+    
+  }
 
   ngOnInit() {
+    this.getProducts()
+  }
+
+  getProducts(){
+    this.productsService.getProducts().subscribe(fetchedProducts=>{
+      this.products=fetchedProducts;
+    })
   }
 
 }

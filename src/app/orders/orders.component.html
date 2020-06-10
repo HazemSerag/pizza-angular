@@ -1,1 +1,25 @@
-<p>orders works!</p>
+<div>
+    <!-- <ul> -->
+        <!-- <li *ngFor="let order of orders ;let i = index"> -->
+            <!-- <h2 *ngFor="let product of order.items">{{product.quantity}}</h2> -->
+
+
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Order</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of orders ;let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{order._id}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        <!-- </li> -->
+    <!-- </ul> -->
+</div>
+
+
