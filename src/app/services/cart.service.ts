@@ -12,6 +12,8 @@ export class CartService {
 
   private addToCartUrl = 'http://localhost:8080/api/add-to-cart' 
 
+  private deleteFromCartUrl = 'http://localhost:8080/api/delete-from-cart' 
+
   constructor( private http:HttpClient) { }
 
   getCart(){
@@ -19,6 +21,10 @@ export class CartService {
   }
 
   addToCart(product){
-    return this.http.post(this.addToCartUrl, product,{responseType: 'text'})
+    return this.http.post(this.addToCartUrl, product)
+  }
+
+  deleteCartItem(productId){
+    return this.http.post(this.deleteFromCartUrl, {productId:productId});
   }
 }

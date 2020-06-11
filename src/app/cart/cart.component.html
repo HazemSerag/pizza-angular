@@ -7,20 +7,23 @@
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
       <th scope="col">Total Price</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of cartItems; let i = index">
       <th scope="row">{{i+1}}</th>
-      <td><img [src]="item?.imgUrl" width="64" height="64"></td>
-      <td>{{item?.title}}</td>
-      <td>{{item?.price}}$</td>
+      <td><img [attr.src]="item?.product.imgUrl" width="64" height="64"></td>
+      <td>{{item?.product.title}}</td>
+      <td>{{item?.product.price}}$</td>
       <td>{{item?.quantity}}</td>
-      <td>{{item?.quantity * item?.price }}$</td>
+      <td>{{item?.quantity * item?.product.price }}$</td>
+      <td><button (click)="deleteFromCart(item.product._id)" class="btn btn-danger">Delete</button></td>
 
     </tr>
     <tr>
-      <td colspan="5">Total Price</td>
+      <td colspan="3"></td>
+      <td colspan="3">Total Price</td>
       <td>134</td>
     </tr>
   </tbody>

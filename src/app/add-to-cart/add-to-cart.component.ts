@@ -18,9 +18,11 @@ export class AddToCartComponent implements OnInit {
   }
 
   addToCart(pizza){
-    this.cartService.addToCart({"productId":`${pizza._id}`,"quantity":1,"title":`${pizza.title}`,"price":pizza.price,"imgUrl":`${pizza.imgUrl}`}).subscribe(res=>{
-      
-      alert(res)
+    //dummy controller for quantity
+    pizza.quantity=1;
+    this.cartService.addToCart({"productId":`${pizza._id}`, "quantity":pizza.quantity}).subscribe(res=>{
+      let response:any = res;
+      alert(response.msg)
     });
   }
   

@@ -5,6 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'menu/:prodId', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'orders/:orderId', component: OrderDetailsComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

@@ -17,7 +17,11 @@ private addOrderUrl = 'http://localhost:8080/api/add-order'
     return this.http.get(this.ordersUrl);
   }
 
+  getOrder(orderId){
+    return this.http.get(this.ordersUrl+'/'+orderId);
+  }
+
   addOrder(order){
-    return this.http.post(this.addOrderUrl, order,{responseType: 'text'})
+    return this.http.post(this.addOrderUrl, order)
   }
 }

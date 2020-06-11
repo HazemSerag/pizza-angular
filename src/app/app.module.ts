@@ -16,6 +16,8 @@ import { CartService } from './services/cart.service';
 import { OrdersService } from './services/orders.service';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { OrderFormComponent } from './order-form/order-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     OrdersComponent,
     NotFoundComponent,
     AddToCartComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    OrderDetailsComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,
