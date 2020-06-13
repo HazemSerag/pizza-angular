@@ -9,7 +9,7 @@ import { Observable } from 'rxjs'
 })
 export class ProductsService {
 
-  private productsURL = "http://localhost:8080/"
+  private productsURL = "/restaurant"
 
   constructor(private http:HttpClient ) { }
 
@@ -18,7 +18,7 @@ export class ProductsService {
   }
 
   getProduct(prodId){
-    return this.http.get(this.productsURL+"menu/"+prodId);
+    return this.http.get(this.productsURL+"/menu/"+prodId);
   }
 
 }

@@ -8,11 +8,11 @@ import { map } from 'rxjs/operators';
 })
 export class CartService {
 
-  public getCartUrl = 'http://localhost:8080/cart'
+  public getCartUrl = '/restaurant/cart'
 
-  private addToCartUrl = 'http://localhost:8080/api/add-to-cart' 
+  private addToCartUrl = '/api/add-to-cart' 
 
-  private deleteFromCartUrl = 'http://localhost:8080/api/delete-from-cart' 
+  private deleteFromCartUrl = '/api/delete-from-cart' 
 
   constructor( private http:HttpClient) { }
 

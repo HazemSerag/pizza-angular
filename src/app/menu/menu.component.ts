@@ -8,6 +8,7 @@ import { ProductsService } from '../services/products.service'
 })
 export class MenuComponent implements OnInit {
   products:any;
+  res:any;
 
   constructor(private productsService:ProductsService) {
     

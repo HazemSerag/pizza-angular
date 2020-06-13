@@ -8,8 +8,8 @@ import { Observable } from 'rxjs'
 })
 export class OrdersService {
 
-public ordersUrl = 'http://localhost:8080/orders';
-private addOrderUrl = 'http://localhost:8080/api/add-order'
+public ordersUrl = 'restaurant/orders';
+private addOrderUrl = '/api/add-order'
 
   constructor(private http:HttpClient) { }
 

@@ -10,7 +10,6 @@ import { OrdersService} from '../services/orders.service'
 export class CartComponent implements OnInit {
   cart:any;
   cartItems:any;
-  const
   constructor(private cartService:CartService, private ordersService:OrdersService ) { }
  
   ngOnInit() {
@@ -25,8 +24,10 @@ export class CartComponent implements OnInit {
   }
 
   orderNow(cart){
+    console.log(cart)
     this.ordersService.addOrder(cart).subscribe(res=>{
       let response:any = res;
+      this.getCart()
       alert(response.msg)
     })
   }
@@ -35,6 +36,7 @@ export class CartComponent implements OnInit {
     console.log("angular" +  productId)
     this.cartService.deleteCartItem(productId).subscribe(res=>{
       let response:any = res;
+      this.getCart()
       alert(response.msg)
     })
   }
