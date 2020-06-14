@@ -1,1 +1,90 @@
-<p>order-form works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Img</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of cartItems; let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td><img [attr.src]="item?.product.imgUrl" width="64" height="64"></td>
+      <td>{{item?.product.title}}</td>
+      <td>{{item?.product.price}}$</td>
+      <td><span (click)="decrease(item,item.product._id)" class="minus" width="30">-</span>{{item?.quantity}}<span
+          (click)="increase(item,item.product._id)" width="30" class="plus">+</span></td>
+      <td>{{item?.quantity * item?.product.price }}$</td>
+
+    </tr>
+    <tr>
+      <td colspan="3"></td>
+      <td colspan="3">Total Price</td>
+      <td>{{totalPrice}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<form *ngIf="!authService.isLoggedIn()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Name">Name</label>
+      <input [(ngModel)]="name" name="name" type="text" class="form-control" id="Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Surname">Surname</label>
+      <input [(ngModel)]="surname" name="surname" type="text" class="form-control" id="Surname">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email</label>
+      <input [(ngModel)]="email" name="email" type="email" class="form-control" id="inputEmail">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Number">Phone Number</label>
+      <input [(ngModel)]="number" name="number" type="text" class="form-control" id="Number">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input [(ngModel)]="adress" name="adress" type="text" class="form-control" id="inputAddress">
+    </div>
+    <div class="form-group">
+      <label for="notes">Other Notes</label>
+      <textarea [(ngModel)]="notes" name="notes" class="form-control" id="notes" rows="3"></textarea>
+    </div>
+  </div>
+    <button (click)="orderNow()" type="submit" class="btn btn-primary">Order!</button>
+</form>
+
+<form *ngIf="authService.isLoggedIn()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Name">Name</label>
+      <input [(ngModel)]="name" name="name" type="text" class="form-control" id="Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Surname">Surname</label>
+      <input [(ngModel)]="surname" name="surname" type="text" class="form-control" id="Surname">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email</label>
+      <input [(ngModel)]="email" name="email" type="email" class="form-control" id="inputEmail">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Number">Phone Number</label>
+      <input [(ngModel)]="number" name="number" type="text" class="form-control" id="Number">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input [(ngModel)]="adress" name="adress" type="text" class="form-control" id="inputAddress">
+    </div>
+    <div class="form-group">
+      <label for="notes">Other Notes</label>
+      <textarea [(ngModel)]="notes" name="notes" class="form-control" id="notes" rows="3"></textarea>
+    </div>
+  </div>
+    <button (click)="orderNow()" type="submit" class="btn btn-primary">Order!</button>
+</form>

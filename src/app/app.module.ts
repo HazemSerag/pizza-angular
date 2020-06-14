@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { JwtModule } from "@auth0/angular-jwt";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +16,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductsService } from './services/products.service';
 import { CartService } from './services/cart.service';
 import { OrdersService } from './services/orders.service';
+import { AuthService } from './services/auth.service';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrderFormComponent } from './order-form/order-form.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './guard/auth-guard.service';
+import { ServerErrorComponent } from './server-error/server-error.component'
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 
 @NgModule({
   declarations: [
@@ -32,14 +40,24 @@ import { OrderFormComponent } from './order-form/order-form.component';
     AddToCartComponent,
     ProductDetailComponent,
     OrderDetailsComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    LoginComponent,
+    ServerErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, 
+    JwtModule.forRoot({
+      config:{ 
+        tokenGetter: () => {
+        return localStorage.getItem("id_token");
+      },}
+    }),
+    FlashMessagesModule.forRoot()
   ],
-  providers: [ProductsService,CartService,OrdersService],
+  providers: [ProductsService,CartService,OrdersService,AuthService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

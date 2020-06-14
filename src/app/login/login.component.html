@@ -1,0 +1,36 @@
+
+<h1>Sign Up</h1>
+<form (submit)="signUp()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" [(ngModel)]="signUpEmail" name="signUpEmail" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputName">Name</label>
+        <input type="text" [(ngModel)]="signUpUsername" name="signUpUsername" class="form-control" id="exampleInputName" >
+      </div>
+      
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" [(ngModel)]="signUpPassword" name="signUpPassword" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputConfirmPassword">Confirm Password</label>
+        <input type="password" [(ngModel)]="signUpConfirmPassword" name="signUpConfirmPassword" class="form-control" id="exampleInputConfirmPassword">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+<h1>Login</h1>
+<form (submit)="login()">
+    <div class="form-group">
+      <label for="loginEmail">Email address</label>
+      <input type="email" [(ngModel)]="loginEmail" name="loginEmail" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input type="password" [(ngModel)]="loginPassword" name="loginPassword" class="form-control" id="loginPassword">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, } from '@angular/core';
 import { CartService } from '../services/cart.service'
+import { FlashMessagesService } from 'angular2-flash-messages';
+
 
 @Component({
   selector: 'app-add-to-cart',
@@ -9,7 +11,7 @@ import { CartService } from '../services/cart.service'
 export class AddToCartComponent implements OnInit {
   @Input() pizza:any;
 
-  constructor(private cartService:CartService) {
+  constructor(private cartService:CartService, private flashService: FlashMessagesService) {
    }
 
 
@@ -22,7 +24,7 @@ export class AddToCartComponent implements OnInit {
     pizza.quantity=1;
     this.cartService.addToCart({"productId":`${pizza._id}`, "quantity":pizza.quantity}).subscribe(res=>{
       let response:any = res;
-      alert(response.msg)
+       this.flashService.show(response.msg,{ cssClass: 'alert-success', timeout: 1500 })      
     });
   }
   

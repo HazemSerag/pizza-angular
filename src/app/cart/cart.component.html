@@ -16,7 +16,7 @@
       <td><img [attr.src]="item?.product.imgUrl" width="64" height="64"></td>
       <td>{{item?.product.title}}</td>
       <td>{{item?.product.price}}$</td>
-      <td>{{item?.quantity}}</td>
+      <td><span (click)="decrease(item,item.product._id)" class="minus" width="30">-</span>{{item?.quantity}}<span (click)="increase(item,item.product._id)" width="30" class="plus">+</span></td>
       <td>{{item?.quantity * item?.product.price }}$</td>
       <td><button (click)="deleteFromCart(item.product._id)" class="btn btn-danger">Delete</button></td>
 
@@ -24,10 +24,14 @@
     <tr>
       <td colspan="3"></td>
       <td colspan="3">Total Price</td>
-      <td>134</td>
+      <td>{{totalPrice}}</td>
     </tr>
   </tbody>
 </table>
+
+<div >
+  <button (click)="updateCart(cartItems)" class="btn btn-warning">Update Cart</button>
+</div>
 
 <div>
     <button (click)="orderNow(cartItems)" class="btn btn-danger">Order now!</button>
