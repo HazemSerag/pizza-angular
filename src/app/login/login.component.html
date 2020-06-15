@@ -1,36 +1,91 @@
+<main class="login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-title mb-5">
+          <h2><a id="loginFormTrigger" (click)="showLogin()"
+              [ngClass]="signUpTab == true ? 'alternative' : ''">Login</a><a (click)="showSignUp()"><span
+                [ngClass]="signUpTab == true ? '' : 'alternative'" id="signupFormTrigger"> / Signup</span></a></h2>
+        </div>
 
-<h1>Sign Up</h1>
-<form (submit)="signUp()">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" [(ngModel)]="signUpEmail" name="signUpEmail" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputName">Name</label>
-        <input type="text" [(ngModel)]="signUpUsername" name="signUpUsername" class="form-control" id="exampleInputName" >
-      </div>
-      
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" [(ngModel)]="signUpPassword" name="signUpPassword" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputConfirmPassword">Confirm Password</label>
-        <input type="password" [(ngModel)]="signUpConfirmPassword" name="signUpConfirmPassword" class="form-control" id="exampleInputConfirmPassword">
-      </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+        <!-- Login form -->
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="login-form"
+          [ngClass]="signUpTab == true ? 'd-none' : ''">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" formControlName="loginEmail" class="form-control"
+              [ngClass]="{ 'is-invalid': loginSubmitted && signInForm.loginEmail.errors }" />
+            <div *ngIf="loginSubmitted && signInForm.loginEmail.errors" class="invalid-feedback">
+              <div *ngIf="signInForm.loginEmail.errors.required">Email is required</div>
+              <div *ngIf="signInForm.loginEmail.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
 
-<h1>Login</h1>
-<form (submit)="login()">
-    <div class="form-group">
-      <label for="loginEmail">Email address</label>
-      <input type="email" [(ngModel)]="loginEmail" name="loginEmail" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" formControlName="loginPassword" class="form-control"
+              [ngClass]="{ 'is-invalid': loginSubmitted && signInForm.loginPassword.errors }" />
+            <div *ngIf="loginSubmitted && signInForm.loginPassword.errors" class="invalid-feedback">
+              <div *ngIf="signInForm.loginPassword.errors.required">Password is required</div>
+              <div *ngIf="signInForm.loginPassword.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <button class="btn btn-main btn-block bold" type="submit">Login</button>
+          <div class="more-actions py-4">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="sendEmails" id="sendEmails">
+              <label class="custom-control-label" for="sendEmails">Send me emails</label>
+            </div>
+            <a class="text-main bold">
+              Lost your Password?
+            </a>
+          </div>
+
+        </form>
+
+        <form [formGroup]="signUpForm" (ngSubmit)="onRegisterSubmit()" class="signup-form"
+          [ngClass]="signUpTab == true ? 'd-block' : ''">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="username" class="form-control"
+              [ngClass]="{ 'is-invalid': registerSubmitted && registerForm.username.errors }" />
+            <div *ngIf="registerSubmitted && registerForm.username.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.username.errors.required">First Name is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" formControlName="email" class="form-control"
+              [ngClass]="{ 'is-invalid': registerSubmitted && registerForm.email.errors }" />
+            <div *ngIf="registerSubmitted && registerForm.email.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.email.errors.required">Email is required</div>
+              <div *ngIf="registerForm.email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control"
+              [ngClass]="{ 'is-invalid': registerSubmitted && registerForm.password.errors }" />
+            <div *ngIf="registerSubmitted && registerForm.password.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.password.errors.required">Password is required</div>
+              <div *ngIf="registerForm.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" formControlName="confirmPassword" class="form-control"
+              [ngClass]="{ 'is-invalid': registerSubmitted && registerForm.confirmPassword.errors }" />
+            <div *ngIf="registerSubmitted && registerForm.confirmPassword.errors" class="invalid-feedback">
+              <div *ngIf="registerForm.confirmPassword.errors.required">Confirm Password is required</div>
+              <div *ngIf="registerForm.confirmPassword.errors.mustMatch">Passwords must match</div>
+            </div>
+          </div>
+          <button class="btn btn-main btn-block bold" type="submit">Sign Up</button>
+        </form>
+
+      </div>
     </div>
-    <div class="form-group">
-      <label for="loginPassword">Password</label>
-      <input type="password" [(ngModel)]="loginPassword" name="loginPassword" class="form-control" id="loginPassword">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </div>
+</main>

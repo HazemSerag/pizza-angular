@@ -27,6 +27,11 @@ export class CartService {
     return this.http.post(this.addToCartUrl, product)
   }
 
+  addMultipleToCart(product){
+    return this.http.post(this.addToCartUrl, product)
+
+  }
+
   updateCartItems(cartItems){
     return this.http.post(this.updateCartUrl, cartItems)
   }

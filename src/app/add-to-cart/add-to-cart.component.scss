@@ -1,0 +1,29 @@
+.cart-box{
+    margin: 0px;
+    top: 1rem;
+    right: 1rem;
+    position: absolute;
+    button{
+        padding: .2rem;
+        .hidden-text{
+            overflow: hidden;
+            width: 25px;
+            height: 25px;
+            transition: width .4s;
+            margin: 0 .1rem;
+        }
+        i{
+            margin: 0 .15rem;
+            font-size: 1rem;
+            margin-right: .5rem;
+        }
+
+        &:hover{
+            .hidden-text{
+                overflow: hidden;
+                width: 130px;
+            }
+        }
+    }
+
+}

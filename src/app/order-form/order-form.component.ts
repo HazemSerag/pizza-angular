@@ -3,6 +3,9 @@ import { CartService} from '../services/cart.service'
 import { OrdersService} from '../services/orders.service'
 import { AuthService } from '../services/auth.service' 
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -15,31 +18,70 @@ export class OrderFormComponent implements OnInit {
   cartItems:any;
   changed:boolean;
   totalPrice;
-  name;surname;email;number;adress;notes;isLogged;
-  constructor(private cartService:CartService, private ordersService:OrdersService,private authService:AuthService, private flashService: FlashMessagesService) { }
+  delivery=12;
+  currency;
+  userInfo:any;
+  orderForm: FormGroup;
+  submitted = false;
+  constructor(private cartService:CartService, private ordersService:OrdersService,private route:ActivatedRoute,private authService:AuthService,private formBuilder: FormBuilder, private flashService: FlashMessagesService) { }
 
 
   ngOnInit() {
+
+    window.scrollTo(0,0);
+
+    if(this.authService.isLoggedIn()){
+        this.userInfo={
+          name:JSON.parse(localStorage.getItem('user')).username,
+          email:JSON.parse(localStorage.getItem('user')).email,
+
+        }
+    }
+
+    this.orderForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      number: ['', [Validators.required, Validators.minLength(7)]],
+      address: ['', Validators.required],
+      notes:['']
+      })
+
+
     this.getCart() 
   }
 
-  orderNow(){
+  get form() { return this.orderForm.controls; }
+
+
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.orderForm.invalid) {
+        return;
+    }
+    this.orderNow(this.orderForm.value)
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.orderForm.reset();
+  }
+
+  orderNow(formDetails){
+    const details:any={...formDetails};
+    details.userId=this.authService.isLoggedIn() ? JSON.parse(localStorage.getItem('user')).id:undefined;
+    
     const order = {
       items:this.cartItems,
-      details:{
-        name:this.name,
-        surname:this.surname,
-        email:this.email,
-        number:this.number,
-        address:this.adress,
-        notes:this.notes,
-        userId : this.authService.isLoggedIn() ? JSON.parse(localStorage.getItem('user')).id:undefined,
-      }
+      details:details,
+      currency:this.currency,
+      totalPrice:this.totalPrice
     }
 
     this.ordersService.addOrder(order).subscribe(res=>{
       let response:any=res;
-      this.flashService.show(response.msg,{ cssClass: 'alert-success', timeout: 1500 })      
+      this.flashService.show(response.msg,{ cssClass: 'alert-success', timeout: 4000 })    
     })
 
   }
@@ -47,10 +89,16 @@ export class OrderFormComponent implements OnInit {
 
   getCart(){
     this.cartService.getCart().subscribe(fetchedCart=>{
-      console.log(fetchedCart)
       this.cartItems=fetchedCart
       this.changed=false;
-    this.getTotalPrice(this.cartItems)
+
+      this.route.queryParams
+      .subscribe(params => {
+        this.currency = params.currency;
+        this.getTotalPrice(this.cartItems)
+
+      });
+
     });
   }
 
@@ -59,7 +107,11 @@ export class OrderFormComponent implements OnInit {
     cartItems.map(p=>{
       this.totalPrice+=(p.product.price*p.quantity);
     })
+    this.totalPrice+=this.delivery;
+    if(this.currency.toString()==='€'){
+      this.totalPrice*=.89;
+      return this.totalPrice;
+    }
     return this.totalPrice;
   }
-
 }

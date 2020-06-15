@@ -17,14 +17,14 @@ import { ServerErrorComponent } from './server-error/server-error.component';
 
 
 const routes: Routes = [
-  { path : '',redirectTo:'',pathMatch: 'full'},
+  { path : '',redirectTo:'home',pathMatch: 'full'},
   { path : '',redirectTo:'menu',pathMatch: 'full'},
   { path : '',redirectTo:'cart',pathMatch: 'full'},
   { path : '',redirectTo:'menu/:prodId',pathMatch: 'full'},
   { path : '',redirectTo:'orders',pathMatch: 'full'},
   { path : '',redirectTo:'500',pathMatch: 'full'},
   { path : '',redirectTo:'orders/:orderId',pathMatch: 'full'},
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'menu/:prodId', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },

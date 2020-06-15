@@ -1,0 +1,70 @@
+.order-details {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 4rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 1rem !important;
+
+    .our-detail,
+    .your-detail,
+    .order-detail {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+  }
+
+  .our-detail {
+    .logo {
+      img {
+        max-width: 86px;
+      }
+    }
+
+    .name {
+      font-weight: 900;
+      font-size: 3rem;
+    }
+
+    .slogan {
+      font-size: 1.2rem;
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .your-detail {
+    padding-top: 5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    @media only screen and (max-width: 768px) {
+      padding-bottom: 1rem !important;
+    }
+
+    .name {
+      font-weight: 900;
+    }
+
+  }
+
+  .order-detail {
+    padding-top: 2rem !important;
+
+    ul {
+      padding: 0px !important;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .bill {
+    @media only screen and (max-width: 768px) {
+      padding: 1rem !important;
+      background-color: rgba(0, 0, 0, 0.03);
+      border-radius: 8px;
+    }
+  }
+}

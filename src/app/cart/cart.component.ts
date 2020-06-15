@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService} from '../services/cart.service'
-import { OrdersService} from '../services/orders.service'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 
@@ -16,18 +15,27 @@ export class CartComponent implements OnInit {
   cartItems:any;
   changed:boolean;
   totalPrice;
-  constructor(private cartService:CartService, private ordersService:OrdersService, private router:Router ,private flashService: FlashMessagesService) { 
+  currency:string;
+  delivery=12;
+  cartIsEmpty=true;
+  constructor(private cartService:CartService, public route: ActivatedRoute, private router:Router ,private flashService: FlashMessagesService) { 
     
   }
  
   ngOnInit() {
+    this.currency="$";
    this.getCart() 
   }
 
+
   getCart(){
     this.cartService.getCart().subscribe(fetchedCart=>{
-      console.log(fetchedCart)
       this.cartItems=fetchedCart
+      if(this.cartItems.length==0){
+        this.cartIsEmpty=true;
+      }else{
+        this.cartIsEmpty=false;
+      }
       this.changed=false;
     this.getTotalPrice(this.cartItems)
     });
@@ -46,6 +54,7 @@ export class CartComponent implements OnInit {
     cartItems.map(p=>{
       this.totalPrice+=(p.product.price*p.quantity);
     })
+    this.totalPrice+=this.delivery;
     return this.totalPrice;
   }
 
@@ -69,14 +78,13 @@ export class CartComponent implements OnInit {
 
   orderNow(cartItems){
     this.cartService.updateCartItems(cartItems).subscribe(res=>{
-      this.router.navigate(['order-form'])
+      this.router.navigate(['order-form'], { queryParams: { currency: this.currency } })
 
     })
 
   }
 
   deleteFromCart(productId){
-    console.log("angular" +  productId)
     this.cartService.deleteCartItem(productId).subscribe(res=>{
       let response:any = res;
       this.getCart()

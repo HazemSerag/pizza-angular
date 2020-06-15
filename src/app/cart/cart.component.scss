@@ -1,0 +1,196 @@
+.cart-page {
+  .page-title {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 900;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 2rem !important;
+    }
+  }
+
+  .cart {
+    .cart-item {
+      margin-bottom: 1.2rem;
+      position: relative;
+
+      span,
+      div {
+        font-weight: 900;
+        line-height: 5;
+
+        // padding: 1rem 4rem;
+        @media only screen and (max-width: 768px) {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .delete {
+          cursor: pointer;
+
+          @media only screen and (max-width: 768px) {
+            position: absolute;
+            right: 8px;
+            z-index: 1;
+          }
+        }
+
+        .img {
+          line-height: 0 !important;
+
+          @media only screen and (max-width: 768px) {
+            text-align: center;
+            display: block !important;
+          }
+
+          img {
+            width: 120px;
+            height: 90px;
+          }
+        }
+
+        .controller {
+
+          .minus,
+          .plus {
+            cursor: pointer;
+          }
+
+          .quantity {
+            padding: 0rem 1rem;
+          }
+
+          @media only screen and (max-width: 768px) {
+            display: block;
+
+          }
+        }
+
+        .hide {
+          display: none;
+
+          @media only screen and (max-width: 768px) {
+            display: inline-block !important;
+          }
+        }
+
+      }
+
+    }
+
+    .update-cart {}
+  }
+
+  .bill {
+    background-color: rgba(84, 84, 84, 0.05);
+    padding: 0px !important;
+    font-weight: 900;
+
+
+    &::before {
+      content: "";
+      display: block;
+      height: 10px;
+      width: 100%;
+      background-color: transparent;
+      background-size: 20px 20px;
+      background-position: 0 10px, 40px 40px;
+      background-image: radial-gradient(closest-side, transparent 9px, rgba(84, 84, 84, 0.05) 100%);
+      margin-top: -10px;
+
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      height: 10px;
+      width: 100%;
+      background-color: transparent;
+      background-size: 20px 20px;
+      background-position: 0 10px, 40px 40px;
+      background-image: radial-gradient(closest-side, transparent 9px, rgba(84, 84, 84, 0.05) 100%);
+      bottom: -10px;
+      transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      position: relative;
+    }
+
+    .bill-content {
+
+      .bill-coloumns {
+        padding: 40px 40px 30px;
+        justify-content: space-between;
+
+        h5 {
+          font-size: 1rem;
+          margin-bottom: 2rem;
+          font-weight: 900;
+        }
+
+        div {
+          margin-bottom: 1rem;
+
+          .custom-control {
+            .custom-control-label {
+              &::before {
+
+                background-color: transparent !important;
+              }
+
+              &::after {
+                border-color: var(--dark-grey) !important;
+              }
+            }
+
+            .custom-control-input:checked~.custom-control-label {
+              &::before {
+                color: #FFF !important;
+                border-color: var(--main) !important;
+                background-color: var(--main) !important;
+                transform: scale(0.5) !important;
+                box-shadow: none !important;
+              }
+
+              &::after {
+                background-image: none !important;
+                border: 2px solid var(--main) !important;
+                border-radius: 50%;
+              }
+
+            }
+
+          }
+        }
+
+        .total {
+          border-top-color: rgba(84, 84, 84, 0.05);
+        }
+
+        .checkout {
+          button {
+            font-weight: 900;
+            font-size: .85rem;
+
+          }
+        }
+      }
+    }
+
+  }
+
+  .empty-cart {
+    h2 {
+      @media only screen and (max-width: 768px) {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    h6 {
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+  }
+
+}

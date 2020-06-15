@@ -1,16 +1,33 @@
-<table class="table table-bordered">
-    
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>{{order?.details.name}}</td>
-        <td>{{order?._id}}</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="order-details">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-5 text-center py-2 our-detail">
+          <div class="logo text-center py-2"><img class="img-fluid" src="../../assets/icons/pizza.png"></div>
+          <div class="name">Pizza Shop</div>
+          <div class="slogan">We do pizza right.</div>
+        </div>
+        <div class="col-md-5 offset-md-2 text-center pb-2 your-detail">
+          <h4 class="name">Mr/Mrs {{order?.details.name }} {{ order?.details.surname}} </h4>
+          <h5 class="email">{{order?.details.email}}</h5>
+          <h6 class="number">{{order?.details.number}}</h6>
+        </div>
+        <div class="col-md-5 text-center  order-detail">
+          <h5 class="bold">You ordered</h5>
+          <ul>
+            <li *ngFor="let item of order?.items">{{ item.product.title}}<span
+                class="quantity">{{ item.quantity}}</span></li>
+          </ul>
+          <h5>To (Address): {{order?.details.address}}</h5>
+          <h5>Notes: {{order?.details.notes}}</h5>
+        </div>
+        <div class="col-md-5 offset-md-2 text-center pt-4 bill">
+          <h3 class="bold">Total Paid</h3>
+          <h4 class="bold">{{order?.totalPrice+order?.currency}}</h4>
+        </div>
+        <div class="col-12 text-center pt-5">
+          Thank you for dealing with<span class="bold"> Pizza Shop</span>!
+        </div>
+
+    </div>
+  </div>
+</div>

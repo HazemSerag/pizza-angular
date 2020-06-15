@@ -2,8 +2,6 @@
 @import '_var';
 
 @import "~bootstrap/scss/bootstrap.scss";
+@import '_globals';
 @import '_fonts';
 
-body{
-    font-family: 'Noodle';
-}

@@ -1,0 +1,25 @@
+.form-group,
+.form-control {
+    label {
+        text-transform: uppercase;
+        color: var(--light-black);
+        font-weight: 700;
+        font-size: .8rem;
+    }
+
+    input {
+        border-color: rgba(84, 84, 84, 0.1) !important;
+        &.invalid-input{
+            border: 1px solid var(--danger) !important;
+            border-color: var(--danger) !important;
+        }
+    }
+}
+
+.actions{
+    text-align: right;
+    @media only screen and (max-width: 768px) {
+        text-align: center !important;
+      }
+
+}

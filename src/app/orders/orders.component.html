@@ -1,27 +1,24 @@
 <div>
-    <!-- <ul> -->
-        <!-- <li *ngFor="let order of orders ;let i = index"> -->
-            <!-- <h2 *ngFor="let product of order.items">{{product.quantity}}</h2> -->
+  <h1 class="page-title col-lg-12 text-dark-grey">Orders</h1>
+  <table *ngIf="!noOrders" class="table table-hover">
+    <thead>
+      <tr class="head">
+        <th scope="col">Order</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders ;let i = index" routerLink="{{order._id}}">
+        <td>{{order?._id}}</td>
+        <td>{{i+1}}</td>
+      </tr>
+    </tbody>
+  </table>
 
+  <!-- Orders Empty -->
+  <div *ngIf="noOrders" class="no-orders text-center">
+    <h2 class="bold text-dark-grey ">You don't have orders yet</h2>
+    <h6 class="text-main bold " routerLink="/menu">See our menu</h6>
+  </div>
 
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Order</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let order of orders ;let i = index">
-                    <th scope="row">{{i+1}}</th>
-                    <td>{{order?._id}}</td>
-                    <a routerLink="{{order._id}}">See details</a>
-                  </tr>
-                
-                </tbody>
-              </table>
-        <!-- </li> -->
-    <!-- </ul> -->
 </div>
-
-

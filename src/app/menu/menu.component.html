@@ -1,32 +1,22 @@
-<!-- <div >
-  <h3>{{ product?.title }} Pizza</h3>
-  <h6>Price : {{ product?.price }}</h6>
-</div>
-
-
-<button class="btn btn-primary">Here</button> -->
-
-
-
-<div class="container p-4">
+<div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-md-12">
       <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let product of products">
-          <div class="card">
-            <img [src]="product?.imgUrl" class="card-img-top" alt="...">
+        <div *ngFor="let product of products" class="mb-4 col-md-4">
+          <div class="product-card">
+            <div class="bg-img product-img" [ngStyle]="{ 'background-image': 'url(' + product.imgUrl + ')'}"></div>
             <div class="card-body">
-              <h5 class="card-title">{{ product?.title }} Pizza</h5>
-              <p class="card-text">Price : {{ product?.price }}</p>
-              <app-add-to-cart [pizza]="product"></app-add-to-cart>
-            </div>
-            <div>
-              <a routerLink="{{product._id}}" class="btn btn-danger btn-block">Read More</a>
+              <h5 class="card-title bold">{{ product.title }}</h5>
+              <h6 class="price">{{ product.price }}$</h6>
+              <p class="card-text">{{ product.description }}</p>
+              <div class="card-controls">
+                <a class="details text-main" routerLink="{{product._id}}"><span class="neu">Read More</span></a>
+                <app-add-to-cart [pizza]="product"></app-add-to-cart>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>

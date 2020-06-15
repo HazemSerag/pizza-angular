@@ -1,14 +1,50 @@
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img [attr.src]="product?.imgUrl" class="card-img" alt="...">
-        <!-- <div [ngStyle]="{'background-image': 'url(' + product?.imgUrl  + ')'}" height="300"> -->
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{product?.title}}</h5>
-          <p class="card-text">{{product?.description}}</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="product-detail">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-md-7 details-left">
+              <div class="bg-img product-img" [ngStyle]="{ 'background-image': 'url(' + product?.imgUrl + ')'}">
+              </div>
+              <div class="product-controls">
+
+              </div>
+            </div>
+
+            <div class="col-md-5 details-right">
+              <div class="card-head">
+                <h2 class="title">{{product?.title}}</h2>
+                <h6 class="sub-title">Lorem Ipsum is simply
+                  dummy text</h6>
+              </div>
+              <div class="row no-gutters toolbar">
+                <div class="price">
+                  <h5 class="sub-title">Price</h5>
+                  {{product?.price}}$
+                </div>
+                <div class="quantity">
+                  <h5 class="sub-title">Quantity</h5>
+                  <div class="quantity-controller">
+                    <div (click)="decrease()" class="minus"><i class="fas fa-minus"></i>
+                    </div>
+                    <span class="counter bold">{{product?.quantity}}</span>
+                    <div (click)="increase()" class="plus"><i class="fas fa-plus"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="description">
+                {{product?.description}}
+              </div>
+              <div class="details-controls my-2">
+                <div class="total-price">
+                  <h6 class="bold">TOTAL PRICE</h6>
+                  <h5>{{product?.price * product?.quantity }}$</h5>
+                </div>
+                <button (click)="addToCart(product)" class="btn btn-main bold">Add to Cart</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

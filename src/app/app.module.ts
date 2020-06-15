@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { ServerErrorComponent } from './server-error/server-error.component'
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
         return localStorage.getItem("id_token");
       },}
     }),
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [ProductsService,CartService,OrdersService,AuthService,AuthGuardService],
   bootstrap: [AppComponent]

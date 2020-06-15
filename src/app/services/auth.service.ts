@@ -25,7 +25,6 @@ export class AuthService {
 
   logout(){
     const userId = JSON.parse(localStorage.getItem('user')).id
-    console.log(userId)
     localStorage.clear();
     return this.http.post(this.logoutUrl, {userId:userId})
   }
@@ -38,7 +37,6 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    console.log(this.jwtHelper.isTokenExpired())
     return !this.jwtHelper.isTokenExpired()
   }
 

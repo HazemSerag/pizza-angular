@@ -1,0 +1,214 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'AvantGarde';
+    min-height: 100vh;
+    // display: flex;
+    // justify-content: center;
+}
+main{
+    // display: flex;
+    // width: 100%;
+    // justify-content: center;
+    padding: 2rem 1rem;
+    @media only screen and (min-width: 992px) {
+        padding-top: 100px;
+    }
+    padding-top: 90px;
+
+}
+
+h1,h2,h3,h4,h5,h6{
+    &:focus{
+        outline: none !important;
+    }
+}
+
+.flash-messages{
+    position: fixed;
+    top: 72px;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    display:flex;
+    justify-self: center;
+    font-weight: 900 !important;
+
+}
+.alert-success,.alert-danger{
+    font-weight: 900 !important;
+    position: fixed;
+    top: 74px;
+    max-width: 1140px !important;
+    min-width: 254px !important;
+    right: 10%;
+    left: 10%;
+}
+.alert{
+    border: none !important;
+}
+
+.form-control.is-invalid{
+    background-image: none !important;
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.btn-main,.btn-main:focus,button:focus,button:active,button:focus-within,button:hover{
+    border: 0px !important;
+    outline: 0px !important;
+    box-shadow: none !important;
+}
+
+textarea{
+    outline: 0px !important;
+    box-shadow: none !important;
+}
+
+.btn-outline-main:hover{
+    color: var(--white);
+    border: 1px solid var(--main) !important;
+}
+
+.bold{
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.btn{
+    padding: .4rem 1.2rem;
+    transition: all .4s !important;
+
+}
+
+.btn-main{
+    // border-radius: 22px !important;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.bg-img{
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+input:focus{
+    outline: 0px !important;
+    box-shadow: none !important;
+}
+
+.quantity-controller {
+    width: 158px;
+    padding: .35rem;
+    // box-shadow: 1px 1px 2px rgba($color: #000, $alpha: .1);
+    background-color: rgba($color: #000, $alpha: .05);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .minus,
+    .plus {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        // box-shadow: 1px 1px 2px rgba($color: #000, $alpha: .1);
+        background-color: var(--white);
+        cursor: pointer;
+
+        &:hover {
+            i {
+                color: rgba($color: #000, $alpha: .6);
+                // box-shadow: inset -4px -4px 10px rgba($color: #000, $alpha: .5),inset -4px -4px 10px rgba($color: #000, $alpha: .1);
+
+            }
+        }
+
+        i {
+            font-size: 1.4rem;
+            color: rgba($color: #000, $alpha: .3);
+            // box-shadow: -4px -4px 15px rgba($color: #000, $alpha: .5),-4px -4px 15px rgba($color: #000, $alpha: .1);
+        }
+
+        // box-shadow: -2px -2px 10px rgba(255,255,255,.8), -2px -2px 10px rgba(000,000,000,.1);
+        // box-shadow: inset -2px -2px 7px rgba(255,255,255,.8),inset -2px -2px 7px rgba(000,000,000,.1);
+
+    }
+}
+
+
+.cart-page{
+    .cart-items{
+        padding: .5rem;
+        border-radius: 8px;
+        box-shadow: 1px 1px 4px rgba($color: #000, $alpha: .1), -1px -1px 4px rgba($color: #000, $alpha: .1);
+        
+        .product{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0rem;
+            &:first-child,&:last-child{
+                padding: 0rem;
+            }
+            .details{
+                .product-img{
+                    width: 80px;
+                    height: 100px;
+                    border-radius: 8px;
+                }
+                .title, .price{
+                    display: inline-block;
+                    padding: 0rem .5rem;
+                }
+            }
+
+            .controls{
+                display: flex;
+                .form-group{
+                    &:focus,&:hover,&:active{
+                        outline: 0px;
+                        box-shadow: none;
+                        border: 0px;
+                    }
+                    button{
+                        border: 0px  !important;
+                        margin: 0rem .25rem;
+                        &:hover{
+                            background-color: var(--white) !important;
+                            i{
+                                font-size: 1.35rem;
+                            }
+                        }
+                        i{
+                            color: var(--main);
+                            font-size: 1.2rem;
+                            transition: font-size .2s;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .create-order{
+        text-align: center;
+    }
+}

@@ -1,7 +1,117 @@
-nav{
-    padding: 1rem 2rem;
-    background-color: red;
-    a{
-        color: white;
+.main-header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 100%;
+  background-color: var(--white);
+  padding: 0 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  box-shadow: 1px 0px 14px rgba(#000, .1);
+
+  @media only screen and (max-width: 992px) {
+    padding: 0rem;
+  }
+
+  nav.navbar {
+    display: flex;
+    justify-content: center;
+
+    @media only screen and (max-width: 992px) {
+      justify-content: space-between !important;
+      padding: 0.5rem 1rem;
     }
+
+    padding: .5rem 0rem;
+
+    .navbar-brand {
+      &:focus {
+        outline: 0px;
+      }
+
+      .logo {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--main);
+        transform: rotate(-15deg);
+        border-radius: 8px;
+
+        img {
+          // filter: invert(1);
+          transform: rotate(15deg);
+          width: 42px;
+          height: 40px;
+        }
+      }
+    }
+
+    button.navbar-toggler {
+      padding: 0px;
+
+      .navbar-toggler-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: .2rem;
+
+        .line {
+          height: 2px;
+          background-color: var(--black);
+          width: 100%;
+        }
+      }
+    }
+
+    .navbar-collapse {
+      // max-width: 1140px;
+      padding: 0rem 1rem;
+
+      @media only screen and (max-width: 992px) {
+        padding: 0rem;
+        padding-top: 1rem;
+      }
+
+      .nav-link {
+        color: var(--dark-grey);
+        &.login{
+          @media only screen and (max-width: 992px) {
+            padding-left: 0rem !important;
+          }
+        }
+
+        &.active,
+        &:hover {
+          color: rgba(#000, .4);
+        }
+      }
+
+    }
+  }
+
+  .btn {
+
+    &.active,
+    &:hover,
+    &:focus {
+      color: rgba(#000, .4) !important;
+      border-color: var(--white) !important;
+    }
+  }
+}
+
+.btn{
+  &.logout{
+    border: none !important;
+    &.active,
+    &:hover,
+    &:focus{
+      border: none!important;
+    }
+  }
 }
