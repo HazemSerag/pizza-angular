@@ -10,10 +10,10 @@
           <div class="row">
             <div (click)="deleteFromCart(item.product._id)" class="col-md-1 delete">X</div>
             <div class="col-md-3 img "><img [attr.src]="item?.product.imgUrl"></div>
-            <div class="col-md-2 name"><span class="hide">Product:</span> <span class="show">
+            <div class="col-md-3 name"><span class="hide">Product:</span> <span class="show">
                 {{item?.product.title}}</span></div>
-            <div class="col-md-2 price"><span class="hide">Price:</span> <span
-                class="show">{{currency == '€'? (item?.product.price*.89) + currency:item?.product.price + currency}}
+            <div class="col-md-1 price"><span class="hide">Price:</span> <span
+                class="show">{{currency == '€'? (item?.product.price*.89).toFixed(1) + currency:item?.product.price + currency}}
               </span> </div>
             <div class="col-md-2 controller">
               <div>
@@ -26,7 +26,7 @@
               </div>
             </div>
             <div class="col-md-2 total-price"><span class="hide">Subtotal:</span><span
-                class="show">{{currency == '€'? (item?.quantity * (item?.product.price*.89)) + currency:(item?.quantity * item?.product.price) + currency}}
+                class="show">{{currency == '€'? (item?.quantity * (item?.product.price*.89)).toFixed(1) + currency:(item?.quantity * item?.product.price) + currency}}
               </span></div>
           </div>
 
@@ -39,24 +39,24 @@
           <div class="row bill-coloumns">
             <h5 class="col-12 cart-totals">CART TOTALS</h5>
             <div class="mb-3 col-4">Delivery</div>
-            <div class="mb-3 col-6">{{currency == '€'?(delivery*.89) + currency:delivery + currency}}</div>
+            <div class="mb-3 col-6">{{currency == '€'?(delivery*.89).toFixed(1) + currency:delivery + currency}}</div>
             <div class="mb-3 col-4">Currency</div>
             <div class="mb-3 col-6">
               <div _ngcontent-pnb-c4="" class="mb-3">
                 <div class="custom-control custom-radio">
                   <input type="radio" id="USD" name="USD" value="$" [(ngModel)]="currency"
-                    (change)="getTotalPrice(cartItems)" (click)="getCurrency()" class="custom-control-input">
+                    (change)="getTotalPrice(cartItems)"  class="custom-control-input">
                   <label class="custom-control-label" for="USD"><span>USD$</span></label>
                 </div>
                 <div class="custom-control custom-radio">
                   <input type="radio" id="EURO" name="EURO" value="€" [(ngModel)]="currency"
-                    (change)="getTotalPrice(cartItems)" (click)="getCurrency()" class="custom-control-input">
+                    (change)="getTotalPrice(cartItems)" class="custom-control-input">
                   <label class="custom-control-label" for="EURO"><span>EURO€</span></label>
                 </div>
               </div>
             </div>
             <div class="mb-3 total col-6">Total:</div>
-            <div class="mb-3 col-6 bold">{{currency=='€'?(totalPrice*.89)+currency:totalPrice+currency}}</div>
+            <div class="mb-3 col-6 bold">{{currency=='€'?(totalPrice*.89).toFixed(1)+currency:totalPrice+currency}}</div>
             <div class="checkout col-12 mt-2 mb-2">
               <button (click)="orderNow(cartItems)" class="btn p-2 py-3 btn-block btn-main">
                 PROCEED TO CHECKOUT

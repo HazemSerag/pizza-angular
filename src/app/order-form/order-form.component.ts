@@ -4,7 +4,7 @@ import { OrdersService} from '../services/orders.service'
 import { AuthService } from '../services/auth.service' 
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -23,7 +23,7 @@ export class OrderFormComponent implements OnInit {
   userInfo:any;
   orderForm: FormGroup;
   submitted = false;
-  constructor(private cartService:CartService, private ordersService:OrdersService,private route:ActivatedRoute,private authService:AuthService,private formBuilder: FormBuilder, private flashService: FlashMessagesService) { }
+  constructor(private cartService:CartService,private router:Router, private ordersService:OrdersService,private route:ActivatedRoute,public authService:AuthService,private formBuilder: FormBuilder, private flashService: FlashMessagesService) { }
 
 
   ngOnInit() {
@@ -81,7 +81,13 @@ export class OrderFormComponent implements OnInit {
 
     this.ordersService.addOrder(order).subscribe(res=>{
       let response:any=res;
-      this.flashService.show(response.msg,{ cssClass: 'alert-success', timeout: 4000 })    
+      this.flashService.show(response.msg,{ cssClass: 'alert-success', timeout: 5000 })   
+      if(details.userId){
+        this.router.navigate(['orders']);
+
+      }else{
+        this.router.navigate(['menu']);
+      } 
     })
 
   }

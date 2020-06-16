@@ -28,6 +28,13 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+
+// for angular build prod 
+export function jwtTokenGetter(){
+  return localStorage.getItem("id_token")
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,10 +58,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule, 
     JwtModule.forRoot({
-      config:{ 
-        tokenGetter: () => {
-        return localStorage.getItem("id_token");
-      },}
+      config:{ tokenGetter: jwtTokenGetter}
     }),
     FlashMessagesModule.forRoot(),
     ReactiveFormsModule

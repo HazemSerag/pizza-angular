@@ -140,7 +140,7 @@
               }
 
               &::after {
-                border-color: var(--dark-grey) !important;
+                border-color: var(--dark-grey);
               }
             }
 
@@ -155,7 +155,7 @@
 
               &::after {
                 background-image: none !important;
-                border: 2px solid var(--main) !important;
+                border: 2px solid #EC7A5C !important;
                 border-radius: 50%;
               }
 

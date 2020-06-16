@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service'
 })
 export class HeaderComponent implements OnInit {
   navOpen=false;
-  constructor(public route: ActivatedRoute,private router: Router, private authService:AuthService) {
+  constructor(public route: ActivatedRoute,private router: Router, public authService:AuthService) {
     
    }
 
