@@ -111,11 +111,12 @@ onRegisterSubmit() {
     this.authService.register(user).subscribe(res=>{
       const response:any=res;
       if(response.success){
+        this.signUpTab=false
+        this.signUpForm.reset()
         return this.flashService.show(response.msg,{ cssClass: 'alert-success', timeout: 2500 })
       }
        this.flashService.show(response.msg,{ cssClass: 'alert-danger', timeout: 2500 })
-      this.signUpTab=false
-      this.signUpForm.reset()
+      
 
     })
 }
